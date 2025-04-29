@@ -1,0 +1,2 @@
+# Input Data
+XspecT is able to use either raw sequence-reads (FASTQ-format .fq/.fastq) or already assembled genomes (FASTA-format .fasta/.fna). Using sequence-reads saves up the assembly process but high-quality reads with a low error-rate are needed (e.g. Illumina-reads).
