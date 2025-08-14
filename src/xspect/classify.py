@@ -41,7 +41,11 @@ def classify_genus(
 
 
 def classify_species(
-    model_genus: str, input_path: Path, output_path: Path, step: int = 1
+    model_genus: str,
+    input_path: Path,
+    output_path: Path,
+    step: int = 1,
+    display_name: bool = False,
 ):
     """
     Classify the species of sequences.
@@ -54,6 +58,7 @@ def classify_species(
         input_path (Path): The path to the input file/directory containing sequences.
         output_path (Path): The path to the output file where results will be saved.
         step (int): The amount of kmers to be skipped.
+        display_name (bool): Includes a display name for each tax_ID.
     """
     ProbabilisticFilterSVMModel = import_module(
         "xspect.models.probabilistic_filter_svm_model"
@@ -64,7 +69,7 @@ def classify_species(
     input_paths, get_output_path = prepare_input_output_paths(input_path)
 
     for idx, current_path in enumerate(input_paths):
-        result = model.predict(current_path, step=step)
+        result = model.predict(current_path, step=step, display_name=display_name)
         result.input_source = current_path.name
         cls_path = get_output_path(idx, output_path)
         result.save(cls_path)

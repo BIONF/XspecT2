@@ -114,6 +114,14 @@ xspect classify species --sparse-sampling-step 10 Acinetobacter path
 
 This will only consider every 10th kmer in the sample.
 
+### Inclusion of display names
+By default, the classification results show only the taxonomy ID of each species along with its corresponding score for better readability. To display the full names associated with each taxonomy ID, you can use the `--display-names` (or `-n`) option:
+
+```bash
+xspect classify species --display-names Acinetobacter path
+```
+The output will then be formatted as: `Taxonomy_ID - Display_Name: Score` for each species.
+
 ### MLST Classification
 
 Samples can also be classified based on Multi-locus sequence type schemas. To MLST-classify a sample, run:
